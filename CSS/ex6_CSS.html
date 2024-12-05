@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice setAttribute</title>
+</head>
+
+<body>
+    <a href="#">Lien 1</a>
+    <a href="#">Lien 2</a>
+    <a href="#">Lien 3</a>
+    <button id="changeLinks">Changer les liens</button>
+    <script>
+        document
+            .getElementById('changeLinks')
+            .addEventListener('click', function () {
+                document
+                    .querySelectorAll('a')
+                    .forEach(function (link) {
+                        link
+                            .setAttribute('href', 'https://www.google.com');
+                    });
+            });
+    </script>
+</body>
+
+</html>
