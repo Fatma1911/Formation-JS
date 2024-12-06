@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ajouter des éléments</title>
+</head>
+
+<body>
+    <!--     <button id="ajouter">Ajouter un paragraphe</button>
+    <div id="contenu"></div>
+    <script>
+        document.getElementById('ajouter').addEventListener('click', function () {
+            const nouveauParagraphe = document.createElement('p');
+            nouveauParagraphe.textContent = "Paragraphe ajouté";
+            document.getElementById('contenu').appendChild(nouveauParagraphe);
+        });   
+    </script> -->
+
+    <body>
+        <textarea id="zone" cols="50" rows="10"></textarea>
+        <p>Nombre des car est :<span id="cpte">0</span></p>
+        <script>
+            var zone = document.getElementById("zone");
+            var cpte = document.getElementById("cpte");
+            zone.addEventListener('onchange', function () {
+                console.log(zone.value);
+            })
+        </script>
+    </body>
+</body>
+
+</html>

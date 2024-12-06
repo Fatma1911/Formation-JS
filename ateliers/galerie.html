@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="conteneur"></div>
+    <script>
+        class Galerie {
+
+            // définition du constructeur de la classe Galerie
+            constructor(conteneur) {
+                this.conteneur = conteneur;
+                this.urlImages = [];
+            }
+
+            // cette méthode permet d'ajouter une image à cette galerie
+            ajouterImage(url) {
+                this.urlImages.push(url);
+            }
+
+
+            // cette méthode permet de générer et d'afficher cette galerie dans la page
+            regenerer() {
+                var html = "";
+                // génération des éléments <img> dans le conteneur
+                for (var i = 0; i < this.urlImages.length; i++) {
+                    html = html + '<img src="' + this.urlImages[i] + '" class="hidden">;';
+                }
+                this.conteneur.innerHTML = html;
+            }
+        }
+        var maGalerie = new Galerie(document.getElementById("conteneur"));
+        maGalerie.ajouterImage("./images/tunisia1.jpg");
+        maGalerie.regenerer();
+    </script>
+
+    <input type="text" placeholder="add the name of the image" id="name" />
+    <button
+        onclick="maGalerie.ajouterImage('./images/'+document.getElementById('name').value+'.jpg');maGalerie.regenerer()">
+        Regenerer
+    </button>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Prototype</title>
+</head>
+
+<body>
+    <img id="carouselImage" src="../images" alt="Carousel" style="width: 300px; height: 200px;">
+    <button id="nextButton">Suivant</button>
+    <script>
+        const images = [
+            '../images/tunisia1.jpg',
+            '../images/tunisia2.jpg',
+            '../images/tunisia3.jpg'
+        ];
+        let currentIndex = 0;
+        const carouselImage = document.getElementById('carouselImage');
+        const nextButton = document.getElementById('nextButton');
+        // Afficher la première image
+        carouselImage.src = images[currentIndex];
+        nextButton.onclick = function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            // Utilisation de l'opérateur modulo
+            carouselImage.src = images[currentIndex];
+        };
+    </script>
+</body>
+
+</html>

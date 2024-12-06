@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h2 {
+            text-align: center;
+            padding: 20px;
+            color: black;
+        }
+
+        h3 {
+            text-align: center;
+            padding: 20px;
+            color: black;
+        }
+
+        input {
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            color: black;
+        }
+
+        button {
+            text-align: center;
+            padding: 10px;
+            color: black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Register Participants</h2>
+    Name:<br><input id="name" name="Name"> <br>
+    Age:<br><input id="age" name="Age"> <br>
+    Email:<br><input id="email" name="Email"><br>
+    <button id="add"> Add Participant </button>
+
+    <h3>Participants List</h3> <br>
+    <table id="Participant-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        const button = document.getElementById('add');
+
+
+        button.addEventListener('click', () => {
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var email = document.getElementById('email').value;
+            const row = document.createElement('tr');
+            table = document.getElementById('Participant-table');
+            row.innerHTML = `
+                   <td>${name}</td>
+                   <td>${age}</td>
+                   <td>${email}</td>
+                    <td><button class="remove">Remove</button></td>
+               `;
+            table.appendChild(row);
+
+            row.querySelector('.remove').addEventListener('click', () => {
+                row.remove();
+            });
+
+            
+        });
+        
+
+
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Utilisateurs</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Gestion des Utilisateurs</h1>
+        <!-- Boutons pour ajouter et actualiser -->
+        <button  class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">Ajouter un
+            utilisateur</button>
+        <button class="btn btn-primary mb-3" onclick="fetchUsers()">Actualiser la liste</button>
+        <!-- Table des utilisateurs -->
+        <table id="user-table" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- Les utilisateurs seront chargés ici dynamiquement -->
+            </tbody>
+        </table>
+    </div>
+<!-- Modal Ajouter Utilisateur -->
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Ajouter un utilisateur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm">
+                    <div class="mb-3">
+                        <label for="addUserName" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="addUserName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="addUserEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="addUserEmail" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+ </div>
+    <script>
+       // const urlAPI = "https://jsonplaceholder.typicode.com/users";
+
+        // Sélection des éléments
+       // const fetchButton = document.getElementById('fetch-users');
+        const tableBody = document.querySelector('#user-table tbody'); let xhr; // Variable pour stocker l'objet XMLHttpRequest       
+        // Fonction pour afficher les données dans un tableau
+        function displayUsers(users) {
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                   <td>${user.id}</td>
+                   <td>${user.name}</td>
+                   <td>${user.email}</td>
+                   <td><button class="btn btn-warning mb-3">Editer</button>
+                   <button class="btn btn-danger mb-3">Effacer</button></td>
+
+               `;
+                tableBody.appendChild(row);
+            });
+        }
+        // Fonction pour récupérer les utilisateurs
+        function fetchUsers() {
+            xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://cae80cbc8f8ceb1b003a.free.beeceptor.com/api/utilisateur/', true);           // Ajout d'un délai d'attente
+            //xhr.timeout = 5000;           
+            // Gestion des étapes de la requête
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const users = JSON.parse(xhr.responseText);
+                        tableBody.innerHTML="";
+                        displayUsers(users);
+                    } else {
+                        statusElement.textContent = `Erreur : ${xhr.status} (${xhr.statusText})`;
+                    }
+                }
+            };           // Gestion du délai d'attente
+
+            xhr.send();
+        }       
+        
+
+
+    </script>
+
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .hidden {
+            display: none ;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="toggleButton">Cacher les images</button>
+    <article>
+        <h2>Titre1</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <img id="img1" class="spoiler" src="./images/tunisia1.jpg" width="100px" alt="" srcset="">
+    </article>
+
+    <article>
+        <h2>Titre 2</h2>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <img id="img2" class="spoiler" src="./images/tunisia2.jpg" width="100px" alt="" srcset="">
+    </article>
+
+    <script>
+        document.getElementById('toggleButton').addEventListener('click', function () {
+            var spoilers = document.getElementsByClassName('spoiler');
+            for (var i = 0; i < spoilers.length; i++) {
+                spoilers[i].classList.add('hidden');
+            }
+        });
+
+    </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <h2>Titre 1</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <img class="image" src="./images/tunisia1.jpg" width="100px" alt="" />
+    </article>
+    <article>
+        <h2>Titre 2</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <img class="image" src="./images/tunisia2.jpg" alt="" width="100px" />
+    </article>
+    <button id="cache-button" style="color: blueviolet">caché les photo</button>
+    <button id="affiche-button" style="color: blueviolet"> afficher les photo
+    </button>
+    <script>
+        document
+            .getElementById("cache-button")
+            .addEventListener("click", function () {
+                var images = document.getElementsByClassName("image");
+                for (var i = 0; i < images.length; i++) {
+                    images[i].classList.add("hidden");
+                }
+            });
+        document
+            .getElementById("affiche-button")
+            .addEventListener("click", function () {
+                var images = document.getElementsByClassName("image");
+                for (var i = 0; i < images.length; i++) {
+                    images[i].classList.remove("hidden");
+                }
+            });
+    </script>
+</body>
+
+</html>
